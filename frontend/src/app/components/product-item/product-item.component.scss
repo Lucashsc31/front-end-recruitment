@@ -1,13 +1,22 @@
 .productItem{
     display: grid;
     grid-template-rows: auto auto auto auto;
-    grid-gap: 15px;
+    grid-gap: 10px;
     text-align: center;
+    color: #322e36;
+    cursor: pointer;
+    transition: .2s ease-in;
+    background-color: #fff;
+
+    &:hover{
+        transform: scale(1.01);
+    }
 
     &__photo{
         width: 100%;
         height: 300px;
         background: #babaca;
+        object-fit: cover;
     }
 
     &__title{
@@ -15,14 +24,18 @@
     }
 
     &__price{
-        
         &::before{
             content: '';
         }
         
         span{
+            font-weight: bold;
             font-size: 30px;
         }
+    }
+
+    &__installments{
+
     }
 
 

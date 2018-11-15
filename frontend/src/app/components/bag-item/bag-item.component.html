@@ -1,9 +1,11 @@
 <div class="bagItem">
-  <img class="bagItem__photo"/>
-  <h2 class="bagItem__title">Camiseta Corinthians</h2>
-  <div class="bagItem__amount">Quantidade: 1</div>
+  <img class="bagItem__photo" src="../../../assets/1.jpg"/>
+  <h2 class="bagItem__title">{{ id }}</h2>
+  <div class="bagItem__amount">Quantidade: {{ amount }}</div>
   <div class="bagItem__price">R$ 149,90</div>
-  <div class="bagItem__close">
+  <div 
+    class="bagItem__close"
+    (click)="removeItem()">
     <fa-icon [icon]="faTimes"></fa-icon>
   </div>
 </div>

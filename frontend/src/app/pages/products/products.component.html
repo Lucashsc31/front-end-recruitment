@@ -1,35 +1,40 @@
 <main class="products">  
 
   <app-product-item
-    photo="test"
+    id="1"
+    photo="../../../assets/1.jpg"
     title="Camisa Corinthians"
     price="198.90"
     installments="3"
     currencyFormat="R$"></app-product-item>
 
   <app-product-item
-    photo="test"
+    id="2"
+    photo="../../../assets/1.jpg"
     title="Camisa Corinthians"
     price="198.90"
     installments="3"
     currencyFormat="R$"></app-product-item>
 
   <app-product-item
-    photo="test"
+    id="3"
+    photo="../../../assets/1.jpg"
     title="Camisa Corinthians"
     price="198.90"
     installments="3"
     currencyFormat="R$"></app-product-item>
 
   <app-product-item
-    photo="test"
+    id="4"
+    photo="../../../assets/1.jpg"
     title="Camisa Corinthians"
     price="198.90"
     installments="3"
     currencyFormat="R$"></app-product-item>
 
   <app-product-item
-    photo="test"
+    id="5"
+    photo="../../../assets/1.jpg"
     title="Camisa Corinthians"
     price="198.90"
     installments="3"
@@ -38,4 +43,11 @@
 
 </main>
 
-<app-bag></app-bag>
+<div [ngClass]="{
+    'products__btnBag' : true,
+    'products__btnBag--open': bagOpen
+  }" (click)="bagToggle()">
+    <fa-icon [icon]="bagOpen? faTimes : faShoppingBag"></fa-icon>
+</div>
+
+<app-bag [isOpen]="bagOpen"></app-bag>

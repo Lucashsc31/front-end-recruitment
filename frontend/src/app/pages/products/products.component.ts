@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { faShoppingBag, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
+  faShoppingBag = faShoppingBag;
+  faTimes = faTimes;
+  bagOpen = false;
 
-  constructor() { }
-
-  ngOnInit() {
+  bagToggle() {
+    this.bagOpen = !this.bagOpen;
   }
-
 }

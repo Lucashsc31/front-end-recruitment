@@ -3,7 +3,7 @@
     top: 0;
     right: 0;
     max-width: 750px;
-    width: 50vw;
+    width: 0vw;
     height: 100vh;
     display: grid;
     grid-template-rows: 150px 500px 100px 50px;
@@ -11,6 +11,11 @@
     background-color: #221e25;
     color: #fff;
     z-index: 10;
+    transition: .2s ease;
+
+    &--open{
+        width: 50vw;
+    }
 
     &__header{
         display: grid;
@@ -36,6 +41,28 @@
 
     &__items{
         border-top: 2px solid #151217;
+    }
+
+    &__total{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        margin: 0 25px;
+
+        &Text{
+            justify-self: start;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            color: #969796;
+        }
+
+        &Value{
+            justify-self: end;
+            font-size: 24px;
+            font-weight: bold;
+            color: #e6cc00;
+        }
     }
 
     &__button{

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { BagService } from './../../services/bag/bag.service';
+import { Component, Input } from '@angular/core';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -6,12 +7,18 @@ import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './bag.component.html',
   styleUrls: ['./bag.component.scss']
 })
-export class BagComponent implements OnInit {
+export class BagComponent {
+  @Input() isOpen = false;
+
   faShoppingBag = faShoppingBag;
 
-  constructor() { }
+  constructor(
+    private bagService: BagService
+  ) { }
 
-  ngOnInit() {
+  getBagItems() {
+    return this.bagService.getItems();
   }
+
 
 }

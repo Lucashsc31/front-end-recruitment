@@ -1,5 +1,8 @@
 
-<aside class="bag">
+<aside [ngClass]="{
+    'bag': true,
+    'bag--open': isOpen
+  }">
 
   <div class="bag__header">
     <div class="bag__headerTitle">
@@ -11,32 +14,24 @@
   <div class="bag__items">
 
     <app-bag-item
+      *ngFor="let bagItem of getBagItems()"
+      [id]="bagItem.id"
+      [amount]="bagItem.amount"
       photo="test"
       title="Camisa Corinthians"
       price="198.90"
       installments="3"
       currencyFormat="R$"></app-bag-item>
-
-    <app-bag-item
-      photo="test"
-      title="Camisa Corinthians"
-      price="198.90"
-      installments="3"
-      currencyFormat="R$"></app-bag-item>
-
-    <app-bag-item
-      photo="test"
-      title="Camisa Corinthians"
-      price="198.90"
-      installments="3"
-      currencyFormat="R$"></app-bag-item>
-
-
     
   </div>
 
   <div class="bag__total">
-    
+    <div class="bag__totalText">
+      Subtotal
+    </div>
+    <div class="bag__totalValue">
+      R$379,90
+    </div>
   </div>
 
   <div class="bag__button">
