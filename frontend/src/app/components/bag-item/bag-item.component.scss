@@ -1,0 +1,55 @@
+.bagItem{
+    height: 130px;
+    display: grid;
+    grid-template: 1fr 1fr / 100px 1fr 100px ;
+    grid-template-areas: "photo title close"
+                         "photo amount price";
+    grid-column-gap: 15px;
+    grid-row-gap: 5px;
+    align-items: center;
+    border-bottom: 2px solid #151217;
+    padding: 25px;
+    box-sizing: border-box;
+
+    &__photo{
+        grid-area: photo;
+        height: 100%;
+        width: 100%;
+        background-color: #babaca;
+    }
+
+    &__title{
+        grid-area: title;
+        font-size: 18px;
+        font-weight: bold;
+        align-self: end;
+    }
+
+    &__amount{
+        grid-area: amount;
+        color: #969796;
+        font-size: 14px;
+        align-self: start;
+    }
+
+    &__price{
+        grid-area: price;
+        justify-self: end;
+        font-weight: bold;
+        font-size: 20px;
+        color: #e6cc00;
+    }
+
+    &__close{
+        grid-area: close;
+        justify-self: end;
+        font-size: 20px;
+        color: #000;
+        cursor: pointer;
+        transition: 0.1s ease;
+
+        &:hover{
+            color: #fff;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+.productItem{
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-gap: 15px;
+    text-align: center;
+
+    &__photo{
+        width: 100%;
+        height: 300px;
+        background: #babaca;
+    }
+
+    &__title{
+
+    }
+
+    &__price{
+        
+        &::before{
+            content: '';
+        }
+        
+        span{
+            font-size: 30px;
+        }
+    }
+
+
+
+}

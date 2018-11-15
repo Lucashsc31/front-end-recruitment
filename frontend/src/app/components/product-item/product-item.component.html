@@ -1,7 +1,9 @@
 <div class="productItem">
   <img class="productItem__photo" [src]="photo">
   <h1 class="productItem__title">{{ title }}</h1>
-  <h2 class="productItem__price">{{ price }}</h2>
+  <h2 class="productItem__price">
+    {{ currencyFormat }} <span>{{ price }}</span>
+  </h2>
   <h3 *ngIf="installments" class="productItem__installments">
     ou {{ installments }}x {{ currencyFormat }} 
     <span>{{ installmentValue }}</span>

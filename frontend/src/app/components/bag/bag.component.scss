@@ -1,0 +1,53 @@
+.bag{
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 750px;
+    width: 50vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 150px 500px 100px 50px;
+    grid-gap: 25px;
+    background-color: #221e25;
+    color: #fff;
+    z-index: 10;
+
+    &__header{
+        display: grid;
+        align-items: center;
+        justify-items: center;
+
+        &Title{
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-gap: 20px;
+            align-items: center;
+
+            font-size: 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+
+            .ng-fa-icon{
+                font-size: 45px;
+                color: #fff;
+            }
+        } 
+    }
+
+    &__items{
+        border-top: 2px solid #151217;
+    }
+
+    &__button{
+        display: grid;
+        align-content: center;
+        justify-content: center;
+        height: 50px;
+        margin: 0 25px;
+        font-weight: bold;
+        text-transform: uppercase;
+        box-sizing: border-box;
+        cursor: pointer;
+        background-color: #000;
+    }
+}
