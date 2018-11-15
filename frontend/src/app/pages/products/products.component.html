@@ -45,9 +45,17 @@
 
 <div [ngClass]="{
     'products__btnBag' : true,
-    'products__btnBag--open': bagOpen
+    'products__btnBag--opened': bagOpen
   }" (click)="bagToggle()">
-    <fa-icon [icon]="bagOpen? faTimes : faShoppingBag"></fa-icon>
+
+    <ng-container *ngIf="!bagOpen; else close">
+      <app-bag-icon size="50"></app-bag-icon>
+    </ng-container>
+
+    <ng-template #close>
+      <fa-icon class="products__btnBagClose" [icon]="faTimes"></fa-icon>
+    </ng-template>
+    
 </div>
 
 <app-bag [isOpen]="bagOpen"></app-bag>

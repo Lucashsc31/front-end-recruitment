@@ -1,12 +1,12 @@
 
 <aside [ngClass]="{
     'bag': true,
-    'bag--open': isOpen
+    'bag--opened': isOpen
   }">
 
   <div class="bag__header">
     <div class="bag__headerTitle">
-      <fa-icon [icon]="faShoppingBag"></fa-icon>
+      <app-bag-icon></app-bag-icon>
       <h1>Sacola</h1>
     </div>
   </div>

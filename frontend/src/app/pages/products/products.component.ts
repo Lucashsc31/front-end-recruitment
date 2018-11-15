@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faShoppingBag, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-products',
@@ -7,7 +7,6 @@ import { faShoppingBag, faTimes } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent {
-  faShoppingBag = faShoppingBag;
   faTimes = faTimes;
   bagOpen = false;
 

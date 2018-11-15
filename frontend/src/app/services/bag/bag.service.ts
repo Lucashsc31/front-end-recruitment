@@ -1,16 +1,19 @@
 import { Injectable, AfterViewInit } from '@angular/core';
 import { BagItemInterface } from 'src/app/interfaces/bagItem.interface';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BagService {
   private bagItems: Array<BagItemInterface>;
+  public onActionBag: Subject<any>;
 
   constructor(
     private localStorage: LocalStorageService
   ) {
+    this.onActionBag = new Subject<any>();
     this.initBag();
   }
 
@@ -36,6 +39,7 @@ export class BagService {
       this.bagItems[bagItemIndex].amount += 1;
     }
     this.updateBag();
+    this.onActionBag.next();
   }
 
   removeItem(itemId) {
@@ -47,6 +51,7 @@ export class BagService {
     }
     this.bagItems.splice(bagItemIndex, 1);
     this.updateBag();
+    this.onActionBag.next();
   }
 
   getItems() {

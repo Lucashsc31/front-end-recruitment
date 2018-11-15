@@ -1,0 +1,13 @@
+<div [ngClass]="{
+    'bagIcon': true,
+    'bagIcon--animate': isAnimate
+  }">
+  <div class="bagIcon__numberItems">
+    {{ bagService.getItems().length }}
+  </div>
+  <fa-icon 
+    [icon]="faShoppingBag"
+    [ngStyle]="{
+      'font-size.px': size
+    }"></fa-icon>
+</div>

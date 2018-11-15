@@ -4,6 +4,7 @@ import { ProductItemComponent } from './product-item/product-item.component';
 import { BagComponent } from './bag/bag.component';
 import { BagItemComponent } from './bag-item/bag-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BagIconComponent } from './bag-icon/bag-icon.component';
 
 @NgModule({
   imports: [
@@ -13,12 +14,14 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   declarations: [
     ProductItemComponent,
     BagComponent,
-    BagItemComponent
+    BagItemComponent,
+    BagIconComponent
   ],
   exports: [
     ProductItemComponent,
     BagComponent,
-    BagItemComponent
+    BagItemComponent,
+    BagIconComponent
   ]
 })
 export class ComponentsModule { }
