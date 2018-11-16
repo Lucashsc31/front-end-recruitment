@@ -1,7 +1,8 @@
 .bagItem{
     height: 130px;
     display: grid;
-    grid-template: 1fr 1fr / 100px 1fr 100px ;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: "photo title close"
                          "photo amount price";
     grid-column-gap: 15px;
