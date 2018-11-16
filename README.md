@@ -23,12 +23,12 @@ Lets go to what matters.
 
 At the project root run the following commands.
 
-Install the packages:
+To install the packages:
 ```
 npm install
 ```
 
-To start (NodeJS and Angular):
+To start the App (NodeJS and Angular):
 ```
 npm start
 ```
