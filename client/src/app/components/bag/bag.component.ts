@@ -20,5 +20,9 @@ export class BagComponent {
     return this.bagService.getItems();
   }
 
+  getSubtotal() {
+    return this.bagService.getSubtotal();
+  }
+
 
 }

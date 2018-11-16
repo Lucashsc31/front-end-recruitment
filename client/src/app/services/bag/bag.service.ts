@@ -1,13 +1,15 @@
+import { ProductsService } from './../products/products.service';
 import { Injectable, AfterViewInit } from '@angular/core';
-import { BagItemInterface } from 'src/app/interfaces/bagItem.interface';
+import { IBagItem } from 'src/app/interfaces/bag-item.interface';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { Subject } from 'rxjs';
+import { IProductItem } from 'src/app/interfaces/product-item.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BagService {
-  private bagItems: Array<BagItemInterface>;
+  private bagItems: Array<IBagItem>;
   public onActionBag: Subject<any>;
 
   constructor(
@@ -19,42 +21,50 @@ export class BagService {
 
   initBag() {
     const localBag = this.localStorage.getLocalStorage('bag');
-    this.bagItems = localBag ? localBag : new Array<BagItemInterface>();
+    this.bagItems = localBag ? localBag : new Array<IBagItem>();
   }
 
-  updateBag() {
+  saveBag() {
     this.localStorage.setLocalStorage('bag', this.bagItems);
   }
 
-  addItem(itemId) {
+  addItem(productItem: IProductItem) {
     const bagItemIndex = this.bagItems.findIndex((bagItem) => {
-      return bagItem.id === itemId;
+      return bagItem.productItem.id === productItem.id;
     });
     if (bagItemIndex === -1) {
       this.bagItems.push({
-        id: itemId,
+        productItem,
         amount: 1
       });
     } else {
       this.bagItems[bagItemIndex].amount += 1;
     }
-    this.updateBag();
+    this.saveBag();
     this.onActionBag.next();
   }
 
   removeItem(itemId) {
     const bagItemIndex = this.bagItems.findIndex((bagItem) => {
-      return bagItem.id === itemId;
+      return bagItem.productItem.id === itemId;
     });
     if (bagItemIndex === -1) {
       return false;
     }
     this.bagItems.splice(bagItemIndex, 1);
-    this.updateBag();
+    this.saveBag();
     this.onActionBag.next();
   }
 
   getItems() {
     return this.bagItems;
+  }
+
+  getSubtotal() {
+    let subtotal = 0;
+    this.bagItems.forEach((bagItem) => {
+      subtotal += bagItem.productItem.price * bagItem.amount;
+    });
+    return subtotal;
   }
 }

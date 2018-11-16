@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BagService } from 'src/app/services/bag/bag.service';
+import { IProductItem } from 'src/app/interfaces/product-item.interface';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-item',
@@ -7,24 +9,25 @@ import { BagService } from 'src/app/services/bag/bag.service';
   styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
-  @Input() id: string;
-  @Input() photo: string;
-  @Input() title: string;
-  @Input() price: number;
-  @Input() installments: number;
-  @Input() currencyFormat: string;
+  @Input() productItem: IProductItem;
   installmentValue: number;
+  photo: string;
 
   constructor(
     private bagService: BagService
   ) { }
 
   ngOnInit() {
-    this.installmentValue = this.price / this.installments;
+    this.installmentValue = this.productItem.price / this.productItem.installments;
+    this.photo = this.generateUrlImage(this.productItem.sku);
   }
 
   addItemOnBag() {
-    this.bagService.addItem(this.id);
+    this.bagService.addItem(this.productItem);
+  }
+
+  generateUrlImage(sku) {
+    return `${environment.imageUrl}/${sku}.jpg`;
   }
 
 }

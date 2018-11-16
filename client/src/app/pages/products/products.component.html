@@ -1,45 +1,8 @@
 <main class="products">  
 
-  <app-product-item
-    id="1"
-    photo="../../../assets/1.jpg"
-    title="Camisa Corinthians"
-    price="198.90"
-    installments="3"
-    currencyFormat="R$"></app-product-item>
-
-  <app-product-item
-    id="2"
-    photo="../../../assets/1.jpg"
-    title="Camisa Corinthians"
-    price="198.90"
-    installments="3"
-    currencyFormat="R$"></app-product-item>
-
-  <app-product-item
-    id="3"
-    photo="../../../assets/1.jpg"
-    title="Camisa Corinthians"
-    price="198.90"
-    installments="3"
-    currencyFormat="R$"></app-product-item>
-
-  <app-product-item
-    id="4"
-    photo="../../../assets/1.jpg"
-    title="Camisa Corinthians"
-    price="198.90"
-    installments="3"
-    currencyFormat="R$"></app-product-item>
-
-  <app-product-item
-    id="5"
-    photo="../../../assets/1.jpg"
-    title="Camisa Corinthians"
-    price="198.90"
-    installments="3"
-    currencyFormat="R$"></app-product-item>
-
+  <ng-container *ngFor="let productItem of productsService.getItems()">
+    <app-product-item [productItem]="productItem"></app-product-item>
+  </ng-container>
 
 </main>
 

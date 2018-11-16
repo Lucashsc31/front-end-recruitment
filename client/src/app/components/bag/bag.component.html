@@ -15,13 +15,7 @@
 
     <app-bag-item
       *ngFor="let bagItem of getBagItems()"
-      [id]="bagItem.id"
-      [amount]="bagItem.amount"
-      photo="test"
-      title="Camisa Corinthians"
-      price="198.90"
-      installments="3"
-      currencyFormat="R$"></app-bag-item>
+      [bagItem]="bagItem"></app-bag-item>
     
   </div>
 
@@ -30,7 +24,7 @@
       Subtotal
     </div>
     <div class="bag__totalValue">
-      R$379,90
+      R$ {{ getSubtotal().toLocaleString('pt-BR') }}
     </div>
   </div>
 

@@ -8,7 +8,7 @@ app.use(cors());
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 
-app.get("/products", (req, res) => {
+app.get("/api/products", (req, res) => {
   res.sendFile(path.join(__dirname, "data", "products.json"));
 });
 

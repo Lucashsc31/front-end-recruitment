@@ -1,8 +1,10 @@
 <div class="bagItem">
-  <img class="bagItem__photo" src="../../../assets/1.jpg"/>
-  <h2 class="bagItem__title">{{ id }}</h2>
-  <div class="bagItem__amount">Quantidade: {{ amount }}</div>
-  <div class="bagItem__price">R$ 149,90</div>
+  <img class="bagItem__photo" [src]="photo"/>
+  <h2 class="bagItem__title">{{ bagItem.productItem.title }}</h2>
+  <div class="bagItem__amount">Quantidade: {{ bagItem.amount }}</div>
+  <div class="bagItem__price">
+    {{ bagItem.productItem.currencyFormat }} {{ bagItem.productItem.price.toLocaleString('pt-BR') }}
+  </div>
   <div 
     class="bagItem__close"
     (click)="removeItem()">

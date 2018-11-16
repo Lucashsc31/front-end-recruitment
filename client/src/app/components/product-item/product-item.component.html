@@ -2,12 +2,13 @@
   class="productItem"
   (click)="addItemOnBag()">
   <img class="productItem__photo" [src]="photo">
-  <h1 class="productItem__title">{{ title }}</h1>
+  <h1 class="productItem__title">{{ productItem.title }}</h1>
+  <p>{{ productItem.description }}</p>
   <h2 class="productItem__price">
-    {{ currencyFormat }} <span>{{ price }}</span>
+    {{ productItem.currencyFormat }} <span>{{ productItem.price.toLocaleString('pt-BR') }}</span>
   </h2>
-  <h3 *ngIf="installments" class="productItem__installments">
-    ou {{ installments }}x {{ currencyFormat }} 
-    <span>{{ installmentValue }}</span>
+  <h3 *ngIf="productItem.installments" class="productItem__installments">
+    ou {{ productItem.installments }}x {{ productItem.currencyFormat }} 
+    <span>{{ installmentValue.toLocaleString('pt-BR') }}</span>
   </h3>
 </div>
