@@ -1,34 +1,27 @@
 import { Injectable } from '@angular/core';
-import { IProductItem } from 'src/app/interfaces/product-item.interface';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  private productItems: Array<IProductItem>;
+  public onLoadProducts: Subject<any>;
 
   constructor(
     private http: HttpClient
   ) {
+    this.onLoadProducts = new Subject<any>();
     this.loadItems();
   }
 
   loadItems() {
     this.http.get(`${environment.apiUrl}/products`)
       .subscribe((data: any) => {
-        this.productItems = data.products;
+        this.onLoadProducts.next(data.products);
       }
     );
   }
 
-  getItems() {
-    if (!this.productItems) {
-      return [];
-    } else {
-      return [...this.productItems];
-    }
-  }
-  
 }

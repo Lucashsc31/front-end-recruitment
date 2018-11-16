@@ -1,5 +1,4 @@
-import { ProductsService } from './../products/products.service';
-import { Injectable, AfterViewInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IBagItem } from 'src/app/interfaces/bag-item.interface';
 import { LocalStorageService } from '../local-storage/local-storage.service';
 import { Subject } from 'rxjs';
@@ -11,27 +10,31 @@ import { IProductItem } from 'src/app/interfaces/product-item.interface';
 export class BagService {
   private bagItems: Array<IBagItem>;
   public onActionBag: Subject<any>;
+  public onToggleBag: Subject<any>;
 
   constructor(
     private localStorage: LocalStorageService
   ) {
     this.onActionBag = new Subject<any>();
+    this.onToggleBag = new Subject<any>();
     this.initBag();
   }
 
   initBag() {
-    const localBag = this.localStorage.getLocalStorage('bag');
+    const localBag = this.localStorage.get('bag');
     this.bagItems = localBag ? localBag : new Array<IBagItem>();
   }
 
   saveBag() {
-    this.localStorage.setLocalStorage('bag', this.bagItems);
+    this.localStorage.set('bag', this.bagItems);
+  }
+
+  toggleBag() {
+    this.onToggleBag.next();
   }
 
   addItem(productItem: IProductItem) {
-    const bagItemIndex = this.bagItems.findIndex((bagItem) => {
-      return bagItem.productItem.id === productItem.id;
-    });
+    const bagItemIndex = this.bagItems.findIndex(bagItem => bagItem.productItem.id === productItem.id);
     if (bagItemIndex === -1) {
       this.bagItems.push({
         productItem,
@@ -45,9 +48,7 @@ export class BagService {
   }
 
   removeItem(itemId) {
-    const bagItemIndex = this.bagItems.findIndex((bagItem) => {
-      return bagItem.productItem.id === itemId;
-    });
+    const bagItemIndex = this.bagItems.findIndex(bagItem => bagItem.productItem.id === itemId);
     if (bagItemIndex === -1) {
       return false;
     }
@@ -57,7 +58,11 @@ export class BagService {
   }
 
   getItems() {
-    return this.bagItems;
+    if (!this.bagItems) {
+      return [];
+    } else {
+      return [...this.bagItems];
+    }
   }
 
   getSubtotal() {
@@ -67,4 +72,5 @@ export class BagService {
     });
     return subtotal;
   }
+
 }

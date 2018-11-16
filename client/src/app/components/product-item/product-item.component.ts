@@ -22,10 +22,6 @@ export class ProductItemComponent implements OnInit {
     this.photo = this.generateUrlImage(this.productItem.sku);
   }
 
-  addItemOnBag() {
-    this.bagService.addItem(this.productItem);
-  }
-
   generateUrlImage(sku) {
     return `${environment.imageUrl}/${sku}.jpg`;
   }

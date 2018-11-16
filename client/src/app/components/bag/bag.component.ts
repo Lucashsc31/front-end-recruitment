@@ -1,20 +1,36 @@
 import { BagService } from './../../services/bag/bag.service';
-import { Component, Input } from '@angular/core';
-import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { faShoppingBag, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bag',
   templateUrl: './bag.component.html',
   styleUrls: ['./bag.component.scss']
 })
-export class BagComponent {
-  @Input() isOpen = false;
+export class BagComponent implements OnInit, OnDestroy {
+  private subscriptionToggleBag: Subscription;
+
+  private isOpen = false;
 
   faShoppingBag = faShoppingBag;
+  faTimes = faTimes;
 
   constructor(
     private bagService: BagService
   ) { }
+
+  ngOnInit() {
+    this.subscriptionToggleBag = this.bagService
+      .onToggleBag.subscribe(() => {
+        this.isOpen = !this.isOpen;
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptionToggleBag.unsubscribe();
+  }
 
   getBagItems() {
     return this.bagService.getItems();
@@ -24,5 +40,12 @@ export class BagComponent {
     return this.bagService.getSubtotal();
   }
 
+  getStatus() {
+    return !!this.isOpen;
+  }
+
+  bagToggle() {
+    this.bagService.toggleBag();
+  }
 
 }

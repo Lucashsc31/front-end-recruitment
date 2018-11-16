@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs';
 export class BagIconComponent implements OnInit, OnDestroy {
   @Input() size = 35;
 
-  private observerActionBag: Subscription;
+  private subscriptionActionBag: Subscription;
 
   faShoppingBag = faShoppingBag;
 
@@ -22,14 +22,15 @@ export class BagIconComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.observerActionBag = this.bagService
+    this.subscriptionActionBag = this.bagService
       .onActionBag.subscribe(() => {
         this.animaBagIcon();
-      });
+      }
+    );
   }
 
   ngOnDestroy() {
-    this.observerActionBag.unsubscribe();
+    this.subscriptionActionBag.unsubscribe();
   }
 
   animaBagIcon() {

@@ -3,6 +3,11 @@
     'bag': true,
     'bag--opened': isOpen
   }">
+  
+  <fa-icon 
+    class="bag__btnClose" 
+    [icon]="faTimes"
+    (click)="bagToggle()"></fa-icon>
 
   <div class="bag__header">
     <div class="bag__headerTitle">

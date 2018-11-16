@@ -1,7 +1,9 @@
 <main class="products">  
 
-  <ng-container *ngFor="let productItem of productsService.getItems()">
-    <app-product-item [productItem]="productItem"></app-product-item>
+  <ng-container *ngFor="let productItem of productItems">
+    <app-product-item 
+      [productItem]="productItem"
+      (click)="addItemOnBag(productItem)"></app-product-item>
   </ng-container>
 
 </main>
@@ -10,15 +12,7 @@
     'products__btnBag' : true,
     'products__btnBag--opened': bagOpen
   }" (click)="bagToggle()">
-
-    <ng-container *ngIf="!bagOpen; else close">
-      <app-bag-icon size="50"></app-bag-icon>
-    </ng-container>
-
-    <ng-template #close>
-      <fa-icon class="products__btnBagClose" [icon]="faTimes"></fa-icon>
-    </ng-template>
-    
+    <app-bag-icon size="50"></app-bag-icon>
 </div>
 
-<app-bag [isOpen]="bagOpen"></app-bag>
+<app-bag></app-bag>

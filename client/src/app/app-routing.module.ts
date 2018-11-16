@@ -1,9 +1,9 @@
-import { ProductsComponent } from './pages/products/products.component';
+import { ProductsPageComponent } from './pages/products/products.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: ProductsComponent }
+  { path: '', component: ProductsPageComponent }
 ];
 
 @NgModule({

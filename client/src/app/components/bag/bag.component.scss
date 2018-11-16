@@ -12,9 +12,27 @@
     color: #fff;
     z-index: 10;
     transition: .2s ease;
+    overflow: hidden;
 
     &--opened{
         width: 50vw;
+    }
+
+    &__btnClose{
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 50px;
+        color: #fff;
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        transition: .2s ease;
+        background: #151217;
     }
 
     &__header{
