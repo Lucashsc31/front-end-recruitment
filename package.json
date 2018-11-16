@@ -6,10 +6,10 @@
     "start": "concurrently \"npm run server\" \"npm run client\"",
     "client": "cd client && ng serve",
     "server": "nodemon server/app",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "cd client && ng build",
+    "test": "cd client && ng test",
+    "lint": "cd client && ng lint",
+    "e2e": "cd client && ng e2e"
   },
   "private": true,
   "dependencies": {

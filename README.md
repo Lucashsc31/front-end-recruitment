@@ -1,23 +1,41 @@
-# Netshoes Cart Test
+# Front end Recruitment Test
 
-## Expected result
+I am very grateful to participate in this test.
 
-* See a list of products;
-* Be able to add or remove items to the cart and get instant visual feedback;
-* See the products added to the cart.
+Lets go to what matters.
 
-## Data
 
-The data we provide is a static JSON file under `/public/data`.
+## Stack
+- Angular 6
+  - Rxjs (State)
+  - TypeScript
+- Nodejs
+  - ExpressJS
+- NPM
+- LocalStorage
+- CSS
+  - BEM
+  - SCSS
+- Icons
+  - Font Awesome
 
-## Notes
+## How to build/run
 
-* You can use whatever stack or tooling you want to help you;
-* Feel free to ask us questions during the process (but trust your guts, please!);
-* You should create a static server in order to access the JSON data provided.
+At the project root run the following commands.
 
-## Bonus
+Install the packages:
+```
+npm install
+```
 
-* Persist data on page reload;
-* Test your code;
-* Instructions on how to build/run the project.
+To start (NodeJS and Angular):
+```
+npm start
+```
+
+
+Open the App in http://localhost:4200
+
+Tks! ;D
+
+

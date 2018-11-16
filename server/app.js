@@ -13,5 +13,5 @@ app.get("/api/products", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server rodando na porta ${port}.`);
+  console.log(`API is listening on port: ${port}.`);
 });
