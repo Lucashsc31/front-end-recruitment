@@ -41,6 +41,8 @@
 
     &__items{
         border-top: 2px solid #151217;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
     &__total{
@@ -77,4 +79,22 @@
         cursor: pointer;
         background-color: #000;
     }
+}
+
+@media (max-width: 1000px) 
+{
+    .bag{
+        &--opened{
+            width: 70vw;
+        }   
+    } 
+}
+
+@media (max-width: 800px) 
+{
+    .bag{
+        &--opened{
+            width: 100vw;
+        }   
+    } 
 }
